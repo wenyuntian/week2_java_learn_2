@@ -2,6 +2,7 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,22 +18,50 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<>();
+        for (Integer item : array) {
+            result.add(item * 3);
+        }
+        return result;
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        List<String> result = new ArrayList<>();
+        for (int item : array) {
+            result.add(letters[item - 1]);
+        }
+        return result;
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+        List<String> result = new ArrayList<>();
+        for(int item : array) {
+            int times = (item - 1) / 26;
+            int remainder = (item % 26) == 0 ? 26 : (item % 26);
+            if(times == 0) {
+                result.add(letters[item - 1]);
+            } else {
+                result.add(letters[times - 1] + letters[remainder - 1]);
+            }
+        }
+        return result;
     }
 
     public List<Integer> sortFromBig() {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<>();
+        for (Integer item : array) {
+            result.add(item);
+        }
+        result.sort((value1, value2) -> value2 - value1);
+        return result;
     }
 
     public List<Integer> sortFromSmall() {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<>();
+        for (Integer item : array) {
+            result.add(item);
+        }
+        result.sort((value1, value2) -> value1 - value2);
+        return result;
     }
 }
