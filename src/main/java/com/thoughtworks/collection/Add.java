@@ -120,15 +120,31 @@ public class Add {
     }
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        List<Integer> evenList = new ArrayList<>();
+        List<Integer> oddList = new ArrayList<>();
+
+        for(int item : arrayList) {
+            if (item % 2 == 0) {
+                evenList.add(item);
+            } else {
+                oddList.add(item);
+            }
+        }
+        evenList.sort((value1, value2) -> value1 - value2);
+        oddList.sort((value1, value2) -> value2 - value1);
+        evenList.addAll(oddList);
+        return evenList;
     }
 
+
     public List<Integer> getProcessedList(List<Integer> arrayList) {
-        for(int i = 0; i < arrayList.size() - 1; i++) {
+        Integer length = arrayList.size();
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < length - 1; i++) {
             Integer prevValue = arrayList.get(i);
             Integer next_Value = arrayList.get(i + 1);
-            arrayList.set(i, (prevValue + next_Value) * 3);
+            result.add((prevValue + next_Value) * 3);
         }
-        return arrayList;
+        return result;
     }
 }
